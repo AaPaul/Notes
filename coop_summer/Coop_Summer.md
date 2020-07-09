@@ -96,6 +96,9 @@ mysql -u<user> -p db1 < db1.sql
 
 Reference:https://www.yiibai.com/mysql/distinct.html
 
+#### Limit
+1. following one parameter means that the number of the results will be limited with this parameter
+2. following two parameters (i, j) means that the system would jump to the ith row and search the later j number of the results.
 
 ## Flask
 #### flask 中的before_request 与 after_request
