@@ -162,6 +162,10 @@ It is to find the object whose name is 'Tom' in table named 'User'
 #### sqlalchemy.ext.automap
 It is a function to map the table in the DB to an object. (映射数据库表为一个python可处理对象)
 
+#### There is no right cross in SQLAlchemy 
+inner join -> join('tablename', 'condition')
+leftjoin -> outerjoin('tablename', 'condition')
+
 ## Pip
 #### Use cached xxxx (error)
 ```
