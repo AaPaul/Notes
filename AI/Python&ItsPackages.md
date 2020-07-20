@@ -214,6 +214,22 @@ pd.set_option('max_columns', 1000)
 ### mlxtend is a library including apriori function.
 
 # Python
+#### [i:j] and [i:j:s]
+default settings:
+`[i:j]`: i=0, j = len(str)
+`[i:j:s]`: i = -1, j = -len(str)-1
+
+```[python]
+s = "python"
+a = s[0:2] # py
+b = s[::-1] # nohtyp      # reversed order.
+
+# In Numpy:
+m = [[1,2,3],[4,5,6]]
+
+m[:,::-1]
+[[3,2,1], [6,5,4]]
+```
 
 #### `def fun(*args, **kwargs)`
 args are incoming parameters or tuples. kwargs are key-value pairs.
@@ -262,3 +278,4 @@ $$H(i+1) = (H(i) - char(start)\times\alpha^{L-1}) \times \alpha + char(i+L)$$
 for key, value in dict.items():
     print(key, value)
 ```
+
