@@ -100,6 +100,24 @@ Reference:https://www.yiibai.com/mysql/distinct.html
 1. following one parameter means that the number of the results will be limited with this parameter
 2. following two parameters (i, j) means that the system would jump to the ith row and search the later j number of the results.
 
+#### Differences among left join, right join and inner join
+- Left Join. Query for all satisfied data in Table 1 and the intersection part in Table 2
+```[MySQL]
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name=table2.column_name;
+```
+- Right Join. The query will return all satisfied data in Table 2 and the intersection part in Table 1
+```[MySQL]
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name=table2.column_name;
+```
+- Innter Join. the intersection between Table 1 and Table 2
+- Reference. https://www.runoob.com/sql/sql-join-left.html
+
 ## Flask
 #### flask 中的before_request 与 after_request
 
