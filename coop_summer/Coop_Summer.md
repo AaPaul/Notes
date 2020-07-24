@@ -1,4 +1,6 @@
 ## MySql
+#### Website resources
+- https://www.thinbug.com
 #### 1. Authentication plugin 'caching_sha2_password' cannot be loaded.
 This is because the default setting of password is 'caching_sha2_password'. 
 ```
@@ -152,25 +154,35 @@ quickly find the corresponding url.
 ## Apache
 
 #### Common commands
-一、Start Apache 2 Server /启动apache服务
+1. Start Apache 2 Server /启动apache服务
 ```
 # /etc/init.d/apache2 start
 or
 $ sudo /etc/init.d/apache2 start
 
-二、 Restart Apache 2 Server /重启apache服务
+sudo apachectl start 
+```
 
+2. Restart Apache 2 Server /重启apache服务
+```
 # /etc/init.d/apache2 restart
 or
 $ sudo /etc/init.d/apache2 restart
+```
 
-三、Stop Apache 2 Server /停止apache服务
-
+3. Stop Apache 2 Server /停止apache服务
+```
 # /etc/init.d/apache2 stop
 or
 $ sudo /etc/init.d/apache2 stop
+
+sudo apachectl stop 
 ```
 
+4. check the version of the apache
+```
+sudo apachectl -v
+```
 
 ## SQLAlchemy
 ####        db.session.query(User).filter_by(name='Tom').all()
@@ -251,3 +263,14 @@ rq-dashboard is a general purpose, lightweight, Flask-based web front-end to mon
 #### \# represents a variable name
 
 #### Option is an option in the drop-down list in HTML form
+
+
+## Ubuntu 
+#### Installation
+Mainly for manul partition.
+```
+/ -> root content. 10-20 GB. ext4 format
+/boot -> bootloader. usually 200MB-400MB. ext4 format
+/swap -> swap area. same as the size of the memory. swap area format
+/home -> store personal files. all last space can be allocated to it. ext4.
+```
