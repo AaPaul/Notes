@@ -120,6 +120,13 @@ ON table1.column_name=table2.column_name;
 - Innter Join. the intersection between Table 1 and Table 2
 - Reference. https://www.runoob.com/sql/sql-join-left.html
 
+#### Drop tables
+If the table contains foreign keys, we can change the setting of mysql to cancel the limitation of connection of foreign key.
+```
+set_foreign_checks = 0
+```
+
+
 ## Flask
 #### flask 中的before_request 与 after_request
 
