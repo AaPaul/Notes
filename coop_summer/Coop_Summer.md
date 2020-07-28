@@ -1,4 +1,131 @@
 ## MySql
+#### Install
+```
+sudo apt-get upgrade
+sudo apt-get install mysql-server
+
+sudo mysql_secure_installation
+
+#1
+VALIDATE PASSWORD PLUGIN can be used to test passwords...
+Press y|Y for Yes, any other key for No: N 
+
+#2
+Please set the password for root here...
+New password: 
+Re-enter new password: 
+
+#3
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them...
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : N 
+
+#4
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network...
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : N 
+
+#5
+By default, MySQL comes with a database named 'test' that
+anyone can access...
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : Y
+
+#6
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : Y
+```
+You then need to check the status of the MySQL service.
+```
+systemctl status mysql.service
+# if success, you may see
+mysql.service - MySQL Community Server
+Loaded: loaded
+Active:active(running)
+```
+Configuration of remote connection.
+```
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf #Find bind-address and change it to 0.0.0.0
+
+sudo /etc/init.d/mysql restart 
+```
+Change the datadir to `/home`
+```
+# Stop mysql service
+sudo service mysql stop
+
+# Note: Please do make a copy of mysql file to prevent data lossing when is on moving.
+sudo cp /var/lib/mysql /home/aafc/mysql_copy -r
+
+# Then create a new folder for storing the orginal files.
+sudo mkdir /home/aafc/databases
+sudo mv /var/lib/mysql /home/aafc/databases/
+
+# Delete log files
+sudo rm /home/aafc/databases/mysql/ib_logfile0
+sudo rm /home/aafc/databases/mysql/ib_logfile1
+```
+Modify the configuration of mysql
+```
+
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+# change the parameter named datadir
+datadir = /home/aafc/databases/mysql
+```
+
+Modify the configuration of apparmor.
+```
+sudo vim /etc/apparmor.d/usr.sbin.mysqld
+```
+You can see these information in the file which shows below and you need to update the path. 
+```
+# Allow data dir access
+#  /var/lib/mysql/ r,
+#  /var/lib/mysql/** rwk,
+   /home/aafc/databases/mysql/ r,
+   /home/aafc/databases/mysql/** rwk,
+
+# quit and restart service
+sudo service apparmor reload
+```
+Modify the service which is to start mysql.
+```
+sudo vim /usr/share/mysql/mysql-systemd-start
+
+# In this file, we need to change the path from '/var/lib/mysql' to '/home/aafc/databases/mysql'
+
+# quit and restart mysql
+sudo service mysql restart
+
+# validate and test if the changes are updateds.
+sudo mysql -uroot -p
+show variables like '%datadir%'
++---------------+-----------------------+
+| Variable_name | Value                 |
++---------------+-----------------------+
+| datadir       | /home/database/mysql/ |
++---------------+-----------------------+
+1 row in set (0.00 sec)
+```
+
+#### Delete
+```
+sudo apt-get autoremove --purge mysql-server-5.0
+sudo apt-get remove mysql-server
+sudo apt-get autoremove mysql-server
+sudo apt-get remove mysql-common 
+```
+清理残留文件
+```
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
+```
+
+- references 
+https://blog.csdn.net/LiuNian_SiYu/article/details/53048314 \
+https://noob.tw/remove-mysql-completely/
+
 #### Website resources
 - https://www.thinbug.com
 #### 1. Authentication plugin 'caching_sha2_password' cannot be loaded.
@@ -123,7 +250,7 @@ ON table1.column_name=table2.column_name;
 #### Drop tables
 If the table contains foreign keys, we can change the setting of mysql to cancel the limitation of connection of foreign key.
 ```
-set_foreign_checks = 0
+set_foreign_checks = 1
 ```
 
 
