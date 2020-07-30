@@ -253,6 +253,13 @@ If the table contains foreign keys, we can change the setting of mysql to cancel
 set_foreign_checks = 1
 ```
 
+#### Error 'Cannot find /tmp/mysql.sock'
+```
+sudo find / -name mysql.sock
+sudo find / -name mysqld.sock
+
+sudo ln -s {path} /tmp/mysql.sock
+```
 
 ## Flask
 #### flask 中的before_request 与 after_request
