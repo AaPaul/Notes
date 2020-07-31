@@ -320,9 +320,14 @@ $ sudo /etc/init.d/apache2 stop
 sudo apachectl stop 
 ```
 
-4. check the version of the apache
+4. Check the version of the apache
 ```
 sudo apachectl -v
+```
+
+5. Deploy Flask app on apache
+
+```
 ```
 
 ## SQLAlchemy
