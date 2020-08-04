@@ -261,6 +261,164 @@ sudo find / -name mysqld.sock
 sudo ln -s {path} /tmp/mysql.sock
 ```
 
+#### Install Apache
+```
+sudo apt-get update
+sudo apt-get install libexpat1
+sudo apt-get install apache2 apache2-utils ssl-cert
+
+# Then run the following command to check if the apache ser is responding.
+curl http://localhost
+```
+Some basic commands for managing apache service
+```
+# start
+sudo service apache2 start
+sudo apachetl start
+
+# reload website
+sudo service apache2 reload
+```
+
+
+If the previous step is OK, we can continue to install wsgi part.
+```
+sudo apt-get install libapache2-mod-wsgi
+sudo systemctl restart apache2
+```
+Configure apache for WSGI
+```
+sudo vi /var/www/html/wsgi_test_script.py
+
+# add following part
+def application(environ,start_response):
+    status = '200 OK'
+    html = '<html>\n' \
+           '<body>\n' \
+           ' Hooray, mod_wsgi is working\n' \
+           '</body>\n' \
+           '</html>\n'
+    response_header = [('Content-type','text/html')]
+    start_response(status,response_header)
+    return [html]
+```
+After that, you need to configure the Apache server to serve this file over the HTTP protocol. Now we create a configuration file to serve the `wsgi_test_script.py` script over a sub URL.
+```
+sudo nano /etc/apache2/conf-available/mod-wsgi.conf
+
+# Add the following information
+WSGIScriptAlias /test_wsgi /var/www/html/wsgi_test_script.py
+
+# enabel the configuration and restart 	apache service
+sudo a2enconf mod-wsgi
+sudo systemctl restart apache2
+```
+After that, you can open `http://your_ip_address/test_wsgi` successfully, which illstrates that we can allow other user to visit your project.
+
+
+- reference: https://tecadmin.net/install-apache-mod-wsgi-on-ubuntu-18-04-bionic/
+
+
+#### Deploy the project
+We've already download the required modules on *Installing apache*. Now let's start the deploy the project on apache server.
+
+1. Allow in firewall
+```
+(base) aafc@aafc-VirtualBox:/etc/apache2/sites-available$ sudo ufw allow in "Apache Full"
+Rules updated
+Rules updated (v6)
+
+```
+
+
+2. Copy the project to /var/www/projectname
+```
+(c3pd) aafc@aafc-VirtualBox:/var/www/c3pd$ sudo cp ~/Desktop/c3pd_sources/c3pd2Ver2/
+
+# create wsgi file
+(c3pd) aafc@aafc-VirtualBox:/var/www/c3pd$ sudo nano pedigree.wsgi 
+
+# add the content below
+                                          
+import sys
+from os import path
+sys.path.insert(0, path.abspath(path.dirname(__file__)))
+from app import app as application
+
+# quit (Ctrl + X) and allocate the authority of this folder to apache
+# This is the default setting of Apache and you can find it on /etc/apache2/apache.conf
+(base) aafc@aafc-VirtualBox:/etc/apache2/sites-available$ sudo chown -R www-data:www-data /var/www/c3pd/
+```
+
+3. Website settings
+- create `c3pd.conf` file and add the content. **Note:** In this part, if you use Anaconda to build virtual python environment, you should set the parameter `python-path` to corresponde to its path in anaconda directory.
+In Apache 2.4,
+```
+Order allow, deny
+Allow from all
+
+Change to 
+
+Require all granted
+```
+```
+<VirtualHost *:80>
+        WSGIDaemonProcess c3pd user=www-data group=www-data home=/var/www/c3pd/ python-path=/var/www/flaskapp:/home/aafc/Tools/anaconda3/envs/c3pd/lib/python2.7/site-packages
+        WSGIProcessGroup c3pd
+        WSGIScriptAlias / /var/www/c3pd/pedigree.wsgi
+        <Directory /var/www/c3pd>
+        Require all granted
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+~                  
+```
+- enable the website
+```
+sudo a2ensite c3pd.conf
+
+sudo systemctl reload apache2
+```
+
+
+**The potiential errors.**
+If the website cannot run normally, you can check the error log to figure out which part is in troubles. 
+防火墙是有可能造成网页无法访问的原因之一(500 error), 也有可能是apache没有权限(Default user: www-data, pwd: www-data).
+Using `mysql --print-defaults` can output the default configuration when we run mysql service. These settings can be modified on `/etc/mysql/my.cnf`.
+
+```
+cat /var/log/apache2/error.log
+```
+
+If you meet the problem as follows, 
+```
+Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+```
+the first way you should try is to restart mysql as the possible reason is that the mysql service is disconnected and if it doesn't work, you can try to use these commands to solve it (Based on the my laptop).
+```
+# Check whether the firewall stop the apache server
+
+# Check if the user get the enough authority of the project folder
+sudo chown -R www-data /var/www/c3pd
+
+# You should find the path of the right socket you use
+mysql --print-defaults
+mysql would have been started with the following arguments:
+--port=3306 --socket=mysqld.sock
+
+# Then you can copy the address
+sudo find / -name mysqld.sock
+/var/run/mysqld/mysqld.sock
+
+# Create the soft link between it and /tmp/mysql.sock and restart mysql
+sudo ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
+sudo systemctl restart mysql
+```
+
+
+
+
 ## Flask
 #### flask 中的before_request 与 after_request
 
@@ -325,10 +483,28 @@ sudo apachectl stop
 sudo apachectl -v
 ```
 
-5. Deploy Flask app on apache
+5. Deploy Flask app on apache (In Mysql part)
 
+6. Check and modify the user group of running Apache
 ```
+# Check the environment
+master@ubuntu:~$ apache2 -v
+Server version: Apache/2.4.18 (Ubuntu)
+Server built:   2019-10-08T13:31:25
+master@ubuntu:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:    Ubuntu
+Description:    Ubuntu 16.04.6 LTS
+Release:    16.04
+Codename:    xenial
 ```
+In Ubuntu OS, If we use `apt` or `apt-get` to install Apache, we can see the `envvars` file in `/etc/apache2/` which includes the detail of the user group managing Apache. (`Cat /etc/apache2/envvars`).
+
+Authority allocation
+```
+master@ubuntu:/var/www/html$ sudo chown www-data:www-data -R [your-file]
+```
+- reference: https://zhaokaifeng.com/?p=3271
 
 ## SQLAlchemy
 ####        db.session.query(User).filter_by(name='Tom').all()
@@ -419,4 +595,23 @@ Mainly for manul partition.
 /boot -> bootloader. usually 200MB-400MB. ext4 format
 /swap -> swap area. same as the size of the memory. swap area format
 /home -> store personal files. all last space can be allocated to it. ext4.
+```
+
+#### ufw firewall settings
+```
+# Installation
+sudo apt-get isntall ufw
+
+# Check status
+sudo ufw status
+
+# Start 
+sudo ufw enable
+sudo ufw default deny (Allow the host machine access external website and close all external access to this machine)
+
+# Stop
+sudo ufw disable
+
+# Turn on or turn off
+sudo ufw allow/deny [service or port]
 ```
