@@ -46,3 +46,6 @@ Kmeans的原理以及DBSCAN的原理
 不记概念，不记原理，别人就会认为你不会 \
 滚去看论文
 
+## Week 1
+#### Data set split
+In the case where the data set includes billion or million data, we may split the train/dev/test set into 98%/1%/1% and even much more imbalanced as the purpose of the dev set and the test set are to estimate the performance of models. Note the distribution of the dev set and test set should be the same.
