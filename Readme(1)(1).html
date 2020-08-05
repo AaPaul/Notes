@@ -1,0 +1,1199 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face {
+  font-family: octicons-anchor;
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+    color:#333;
+    background:#fff;
+}
+
+body .markdown-body {
+    padding: 45px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
+
+pre {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body input {
+  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body .octicon {
+  font: normal normal normal 16px/1 octicons-anchor;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h1 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h3 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h5 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body h6 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .pl-c {
+  color: #969896;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0086b3;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #795da3;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #333;
+}
+
+.markdown-body .pl-ent {
+  color: #63a35c;
+}
+
+.markdown-body .pl-k {
+  color: #a71d5d;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #183691;
+}
+
+.markdown-body .pl-v {
+  color: #ed6a43;
+}
+
+.markdown-body .pl-id {
+  color: #b52a1d;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.markdown-body .pl-ml {
+  color: #693a17;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mq {
+  color: #008080;
+}
+
+.markdown-body .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.markdown-body .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mo {
+  color: #1d3e81;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .plan-price-unit {
+  color: #767676;
+  font-weight: normal;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .plan-choice {
+  padding: 15px;
+  padding-left: 40px;
+  display: block;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  font-weight: normal;
+  background-color: #fafafa;
+}
+
+.markdown-body .plan-choice.open {
+  background-color: #fff;
+}
+
+.markdown-body .plan-choice.open .plan-choice-seat-breakdown {
+  display: block;
+}
+
+.markdown-body .plan-choice-free {
+  border-radius: 3px 3px 0 0;
+}
+
+.markdown-body .plan-choice-paid {
+  border-radius: 0 0 3px 3px;
+  border-top: 0;
+  margin-bottom: 20px;
+}
+
+.markdown-body .plan-choice-radio {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+}
+
+.markdown-body .plan-choice-exp {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.markdown-body .plan-choice-seat-breakdown {
+  margin-top: 10px;
+  display: none;
+}
+
+.markdown-body :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+
+@media print {
+  body .markdown-body {
+    padding: 0;
+    border: none;
+  }
+}
+</style><title>Readme_</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-flaxdb" class="anchor" href="#flaxdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FlaxDB</h1>
+<h3>
+<a id="user-content-table-contents" class="anchor" href="#table-contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Table contents</h3>
+<ul>
+<li><a href="#table-contents">Table contents</a></li>
+<li>
+<a href="#environment">Environment</a>
+<ul>
+<li>
+<a href="#the-way-to-build-an-environment">The way to build an environment</a>
+<ul>
+<li><a href="#1-install-mysql">1. Install MySQL.</a></li>
+<li><a href="#2-install-python-using-anaconda-can-easily-inplement-it-recommended">2. Install Python. Using anaconda can easily inplement it (Recommended).</a></li>
+<li><a href="#3-install-redis">3. Install redis</a></li>
+<li><a href="#4-install-apache">4. Install Apache</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#run-the-project">Run the Project</a></li>
+<li>
+<a href="#deploy-the-project">Deploy the project</a>
+<ul>
+<li><a href="#main-processes">Main processes</a></li>
+<li><a href="#the-potiential-errors">The potiential errors.</a></li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="user-content-environment" class="anchor" href="#environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment</h2>
+<p>Python=2.7<br>
+redis = 5.0.7<br>
+MySQL = 8.0<br>
+Apache = 2.4</p>
+<p>We use <em>anaconda</em> to manage the packages used in this project.</p>
+<h3>
+<a id="user-content-the-way-to-build-an-environment" class="anchor" href="#the-way-to-build-an-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The way to build an environment</h3>
+<h4>
+<a id="user-content-1-install-mysql" class="anchor" href="#1-install-mysql" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Install MySQL.</h4>
+<p>You may install a different version of MySQL using this way because that the older version of Ubuntu (before 19.04) only contains MySQL 5.0, which would not be affected on the normal use in usually.</p>
+<pre><code>sudo apt-get upgrade
+sudo apt-get install mysql-server
+</code></pre>
+<p>Then follow the information and input <code>yes|Y</code>.
+After that, we are supposed to initialize MySQL.</p>
+<pre><code>sudo mysql_secure_installation
+  
+#1
+VALIDATE PASSWORD PLUGIN can be used to test passwords...
+Press y|Y for Yes, any other key for No: N 
+  
+#2
+Please set the password for root here...
+New password: 
+Re-enter new password: 
+  
+#3
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them...
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : N 
+  
+#4
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network...
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : N 
+  
+#5
+By default, MySQL comes with a database named 'test' that
+anyone can access...
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : Y
+  
+#6
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : Y
+</code></pre>
+<p>You then need to check the status of the MySQL service.</p>
+<pre><code>systemctl status mysql.service
+  
+# if success, you may see
+mysql.service - MySQL Community Server
+Loaded: loaded
+Active:active(running)
+</code></pre>
+<p>Configuration of remote connection.</p>
+<pre><code>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf #Find bind-address and change it to 0.0.0.0
+  
+sudo /etc/init.d/mysql restart 
+</code></pre>
+<p>Create non-root user</p>
+<pre><code>sudo mysql -uroot -p
+# input your Passwrod
+mysql&gt; CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+  
+#change the rule of encryption to mysql_native_password
+mysql&gt; ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';  
+  
+#setting password
+mysql&gt; ALTER USER 'username'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; 
+  
+mysql&gt; UPDATE user SET host = '%' WHERE user = 'root'; # Can visite the DB remotely
+  
+#refresh the configuration in cache.
+mysql&gt;flush privileges; 
+</code></pre>
+<p>In mysql, we should set the way to identify the user by <code>mysql_native_password</code>. If you don't set this parameter, you may meet this error.</p>
+<pre><code>sqlalchemy.exc.OperationalError: (MySQLdb._exceptions.OperationalError)  
+(2059, "Authentication plugin 'caching_sha2_password' cannot be loaded:  
+/home/aafc/Tools/anaconda3/envs/flaxdb/lib/plugin/caching_sha2_password.so:  
+cannot open shared object file: No such file or directory")
+</code></pre>
+<p>If you only use this way to change the parameter, you may meet a question (<code>Access denied</code>) that the password you've set is not right. Because the
+mysql change the status to the initialization so the password is blank.</p>
+<pre><code>(flaxdb) aafc@aafc-VirtualBox:~/Desktop/flaxdb$: sudo mysql -uroot -p
+Enter password:
+  
+mysql&gt; use mysql;
+mysql&gt; update user set plugin='mysql_native_password' where user='root';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+  
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+  
+mysql&gt; quit
+Bye
+(flaxdb) aafc@aafc-VirtualBox:~/Desktop/flaxdb$ sudo systemctl restart mysql
+(flaxdb) aafc@aafc-VirtualBox:~/Desktop/flaxdb$ sudo systemctl status mysql
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset:&gt;
+     Active: active (running) since Tue 2020-07-28 23:07:45 EDT; 25s ago
+    Process: 98523 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=&gt;
+   Main PID: 98551 (mysqld)
+     Status: "Server is operational"
+      Tasks: 39 (limit: 9488)
+     Memory: 404.6M
+     CGroup: /system.slice/mysql.service
+             └─98551 /usr/sbin/mysqld
+  
+Jul 28 23:07:44 aafc-VirtualBox systemd[1]: Starting MySQL Community Server...
+Jul 28 23:07:45 aafc-VirtualBox systemd[1]: Started MySQL Community Server.
+(flaxdb) aafc@aafc-VirtualBox:~/Desktop/flaxdb$ mysql -uroot -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+  
+</code></pre>
+<p>The way to solve this is that use <code>alter</code> to change the password</p>
+<pre><code>mysql&gt; alter user 'root'@'localhost' identified with mysql_native_password by 'aafc';
+Query OK, 0 rows affected (0.01 sec)
+  
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.01 sec)
+  
+mysql&gt; quit
+Bye
+(flaxdb) aafc@aafc-VirtualBox:~/Desktop/flaxdb$ mysql -uroot -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.21-0ubuntu0.20.04.3 (Ubuntu)
+  
+</code></pre>
+<p>Import Data. It would take a very long time because of the size of this DB. In the processing of importing data, you may meet an error because of the space limitation. The reason is that the default path of storing data is in root directory. One way to prevent this issue is to change the default directory.
+<code>Error: File system root has only 900 MB space</code>
+These are the main process.</p>
+<pre><code># Stop mysql service
+sudo service mysql stop
+  
+# Note: Please do make a copy of mysql file to prevent data lossing when is on moving.
+sudo cp /var/lib/mysql /home/aafc/mysql_copy -r
+  
+# Then create a new folder for storing the orginal files.
+sudo mkdir /home/aafc/databases
+sudo mv /var/lib/mysql /home/aafc/databases/
+  
+# Delete log files
+sudo rm /home/aafc/databases/mysql/ib_logfile0
+sudo rm /home/aafc/databases/mysql/ib_logfile1
+</code></pre>
+<p>Modify the configuration of mysql</p>
+<pre><code>  
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+# change the parameter named datadir
+datadir = /home/aafc/databases/mysql
+</code></pre>
+<p>Modify the configuration of apparmor.</p>
+<pre><code>sudo vim /etc/apparmor.d/usr.sbin.mysqld
+</code></pre>
+<p>You can see these information in the file which shows below and you need to update the path.</p>
+<pre><code># Allow data dir access
+#  /var/lib/mysql/ r,
+#  /var/lib/mysql/** rwk,
+   /home/aafc/databases/mysql/ r,
+   /home/aafc/databases/mysql/** rwk,
+  
+# quit and restart service
+sudo service apparmor reload
+</code></pre>
+<p>Modify the service which is to start mysql.</p>
+<pre><code>sudo vim /usr/share/mysql/mysql-systemd-start
+  
+# In this file, we need to change the path from '/var/lib/mysql' to '/home/aafc/databases/mysql'
+  
+# quit and restart mysql
+sudo service mysql restart
+  
+# validate and test if the changes are updateds.
+sudo mysql -uroot -p
+show variables like '%datadir%'
++---------------+-----------------------+
+| Variable_name | Value                 |
++---------------+-----------------------+
+| datadir       | /home/database/mysql/ |
++---------------+-----------------------+
+1 row in set (0.00 sec)
+</code></pre>
+<p>Congrats, it works!</p>
+<p>Before starting importing data, you are supposed to disable the <code>bin-log</code> function on mysql which can save a lot of space.</p>
+<pre><code>SET sql_log_bin = {OFF};
+</code></pre>
+<p>These are the normal steps for importing data.</p>
+<pre><code>mysql&gt; CREATE DATABASE flaxdb;
+  
+mysql&gt; use flaxdb;
+  
+mysql&gt; source {path to the .sql file}/flaxdb.sql 
+  
+  
+# allocate the authority to the non-root user.
+mysql&gt; GRANT ALL PRIVILEGES ON flaxdb.* to 'username'@'localhost'; 
+mysql&gt; FLUSH PRIVILEGES;
+</code></pre>
+<p>Annother way to create database. Make sure you are in the path named <code>./flaxdb/data/</code>. After run the script, you are supposed to input the root password of mysql. Then the script will create all tables (by <code>create_all_tables.sql</code>) and import all data (by <code>add_all_values.sql</code>).</p>
+<pre><code># First modify the configuration of MySQL
+bash run.sh
+</code></pre>
+<h4>
+<a id="user-content-2-install-python-using-anaconda-can-easily-inplement-it-recommended" class="anchor" href="#2-install-python-using-anaconda-can-easily-inplement-it-recommended" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Install Python. Using anaconda can easily inplement it (Recommended).</h4>
+<p>I've tested that we can also deploy the project on the apache server based on Anaconda, which would be introduced later.</p>
+<pre><code>conda create --name flaxdb python=2.7
+  
+# import environment
+# first of all, you should in the content which includes the file named requirements.txt
+pip install --no-cache-dir -r requirements.txt
+</code></pre>
+<p>You may meet an error in this step in Ubuntu OS. The reason may because of the package named <em>mysqlclient</em>. There may be a confict as there are some dependent libraries for this package.
+You can delete this package in the file and install it seperately by Pip without limitating its version and the problem would be solved.</p>
+<pre><code># first delete mysqlclient==1.3.12 in requirements.txt
+# anaconda will install all dependencies automatically.
+conda install mysqlclient 
+</code></pre>
+<h4>
+<a id="user-content-3-install-redis" class="anchor" href="#3-install-redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Install redis</h4>
+<pre><code>sudo apt update
+sudo apt-get install redis-server
+</code></pre>
+<p>Configuration.<br>
+After entering the file, set the parameter <code>supervised</code> to systemd in order to manage redis as a service.</p>
+<pre><code>sudo vi /etc/redis/redis.conf
+  
+# If you run Redis from upstart or systemd, Redis can interact with your
+# supervision tree. Options:
+#   supervised no      - no supervision interaction
+#   supervised upstart - signal upstart by putting Redis into SIGSTOP mode
+#   supervised systemd - signal systemd by writing READY=1 to $NOTIFY_SOCKET
+#   supervised auto    - detect upstart or systemd method based on
+#                        UPSTART_JOB or NOTIFY_SOCKET environment variables
+# Note: these supervision methods only signal "process is ready."
+#       They do not enable continuous liveness pings back to your supervisor.
+supervised systemd
+  
+# Quit and restart service
+sudo service redis restart
+  
+# Check the status
+sudo systemctl status redis
+</code></pre>
+<p>Some basic commands for controling redis service.</p>
+<pre><code># Start, stop and restart
+sudo service redis start
+sudo service redis stop
+sudo service redis restart
+  
+# client service
+redis-cli
+  
+# Authority remoted connction
+sudo vi /etc/redis/redis.conf
+  
+# change bind address
+# bind 127.0.0.1 ::1
+bind 0.0.0.0
+  
+  
+# quit and restart
+sudo service redis restart
+  
+# Password configuration
+sudo vi /etc/redis/redis.conf
+  
+requirepass {your password}
+</code></pre>
+<h4>
+<a id="user-content-4-install-apache" class="anchor" href="#4-install-apache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Install Apache</h4>
+<pre><code>sudo apt-get update
+sudo apt-get install libexpat1
+sudo apt-get install apache2 apache2-utils ssl-cert
+  
+# Then run the following command to check if the apache ser is responding.
+curl http://localhost
+</code></pre>
+<p>Some basic commands for managing apache service</p>
+<pre><code># start
+sudo service apache2 start
+sudo apachetl start
+  
+# reload website
+sudo service apache2 reload
+</code></pre>
+<p>If the previous step is OK, we can continue to install wsgi part.</p>
+<pre><code>sudo apt-get install libapache2-mod-wsgi
+sudo systemctl restart apache2
+</code></pre>
+<p>Configure apache for WSGI</p>
+<pre><code>sudo vi /var/www/html/wsgi_test_script.py
+  
+# add following part
+def application(environ,start_response):
+    status = '200 OK'
+    html = '&lt;html&gt;\n' \
+           '&lt;body&gt;\n' \
+           ' Hooray, mod_wsgi is working\n' \
+           '&lt;/body&gt;\n' \
+           '&lt;/html&gt;\n'
+    response_header = [('Content-type','text/html')]
+    start_response(status,response_header)
+    return [html]
+</code></pre>
+<p>After that, you need to configure the Apache server to serve this file over the HTTP protocol. Now we create a configuration file to serve the <code>wsgi_test_script.py</code> script over a sub URL.</p>
+<pre><code>sudo nano /etc/apache2/conf-available/mod-wsgi.conf
+  
+# Add the following information
+WSGIScriptAlias /test_wsgi /var/www/html/wsgi_test_script.py
+  
+# enabel the configuration and restart 	apache service
+sudo a2enconf mod-wsgi
+sudo systemctl restart apache2
+</code></pre>
+<p>After that, you can open <code>http://your_ip_address/test_wsgi</code> successfully, which illstrates that we can allow other user to visit your project.</p>
+<ul>
+<li>reference: <a href="https://tecadmin.net/install-apache-mod-wsgi-on-ubuntu-18-04-bionic/" rel="nofollow">https://tecadmin.net/install-apache-mod-wsgi-on-ubuntu-18-04-bionic/</a>
+</li>
+</ul>
+<h2>
+<a id="user-content-run-the-project" class="anchor" href="#run-the-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run the Project</h2>
+<p>Now all requirements are satisfied and we can start the project now. Based on the part above, you can easily see that the default user and its password are both <code>aafc</code>.</p>
+<ul>
+<li>
+<p>At first, we should set the connection bewteen the program and the database.<br>
+In <strong><code>config.py</code></strong>,
+we need to set the <code>SQLALCHEMY_DATABASE_URI</code> to your own database. For example,<br>
+<code>mysql://addProgram:mettalica@localhost/flaxDB?charset=utf8</code> is a connection setting. <code>addProgram</code> is the name of DB user and its corresponding password is <code>mettalica</code>. <code>localhost</code> is the parameter which describe that the user is in local. <code>flaxDB</code> is the named of the database.</p>
+</li>
+<li>
+<p>Secondly, we are supposed to start redis server as well as some workers (by running worker.py).<br>
+We can just run the script named <code>START.sh</code>. If you see the information shows below, the prequiste part is running successfully. **Note:**Please keep the terminal of running the script and use another terminal to run the next script.</p>
+</li>
+</ul>
+<pre><code>14:53:27 Worker rq:worker:dd9f36539c5947daa622ee5f6d183589: started, version 1.3.0
+14:53:27 Worker rq:worker:91107a2f7e62443cb3b6c99f8f65fa54: started, version 1.3.0
+14:53:27 Worker rq:worker:70c6f1084b544ab883725d84e910bd7c: started, version 1.3.0
+14:53:27 *** Listening on slow...
+14:53:27 *** Listening on slow...
+14:53:27 *** Listening on fast...
+</code></pre>
+<ul>
+<li>At last, run the command below and you will see the website.</li>
+</ul>
+<pre><code>python run.py
+</code></pre>
+<h2>
+<a id="user-content-deploy-the-project" class="anchor" href="#deploy-the-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deploy the project</h2>
+<h4>
+<a id="user-content-main-processes" class="anchor" href="#main-processes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Main processes</h4>
+<p>We've already download the required modules on <em>Installing apache</em>. Now let's start the deploy the project on apache server.</p>
+<ol>
+<li>Allow in firewall</li>
+</ol>
+<pre><code>(base) aafc@aafc-VirtualBox:/etc/apache2/sites-available$ sudo ufw allow in "Apache Full"
+Rules updated
+Rules updated (v6)
+</code></pre>
+<ol start="2">
+<li>Copy the project to /var/www/projectname</li>
+</ol>
+<pre><code>(c3pd) aafc@aafc-VirtualBox:/var/www/c3pd$ sudo cp ~/Desktop/c3pd_sources/c3pd2Ver2/
+  
+# create wsgi file
+(c3pd) aafc@aafc-VirtualBox:/var/www/c3pd$ sudo nano pedigree.wsgi 
+  
+# add the content below
+  
+import sys
+from os import path
+sys.path.insert(0, path.abspath(path.dirname(__file__)))
+from app import app as application
+  
+# quit (Ctrl + X) and allocate the authority of this folder to apache
+(base) aafc@aafc-VirtualBox:/etc/apache2/sites-available$ sudo chown -R www-data:www-data /var/www/c3pd/
+  
+</code></pre>
+<ol start="3">
+<li>Website settings</li>
+</ol>
+<ul>
+<li>create <code>c3pd.conf</code> file and add the content. Note: In this part, if you use Anaconda to build virtual python environment, you should set the parameter <code>python-path</code> to corresponde to its path in anaconda directory.</li>
+</ul>
+<pre><code>&lt;VirtualHost *:80&gt;
+        WSGIDaemonProcess c3pd user=www-data group=www-data home=/var/www/c3pd/ python-path=/var/www/flaskapp:/home/aafc/Tools/anaconda3/envs/c3pd/lib/python2.7/site-packages
+        WSGIProcessGroup c3pd
+        WSGIScriptAlias / /var/www/c3pd/pedigree.wsgi
+        &lt;Directory /var/www/c3pd&gt;
+        Require all granted
+        &lt;/Directory&gt;
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+~                  
+</code></pre>
+<ul>
+<li>enable the website</li>
+</ul>
+<pre><code>sudo a2ensite c3pd.conf
+  
+sudo systemctl reload apache2
+</code></pre>
+<h4>
+<a id="user-content-the-potiential-errors" class="anchor" href="#the-potiential-errors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The potiential errors.</h4>
+<p>If the website cannot run normally (showing 500 error on the website), you can check the error log to figure out which part is in troubles.</p>
+<pre><code>cat /var/log/apache2/error.log
+</code></pre>
+<p>If you meet the problem as follows,</p>
+<pre><code>Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+</code></pre>
+<p>the first way you should try is to restart mysql as the possible reason is that the mysql service is disconnected and if it doesn't work, you can try to use these commands to solve it (Based on the my laptop).</p>
+<pre><code># Check whether the firewall stop the apache server
+  
+# Check if the user get the enough authority of the project folder
+sudo chown -R www-data /var/www/c3pd
+  
+# You should find the path of the right socket you use
+mysql --print-defaults
+mysql would have been started with the following arguments:
+--port=3306 --socket=mysqld.sock
+  
+# Then you can copy the address
+sudo find / -name mysqld.sock
+/var/run/mysqld/mysqld.sock
+  
+# Create the soft link between it and /tmp/mysql.sock and restart mysql
+sudo ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock
+sudo systemctl restart mysql
+</code></pre>
+</article></body></html>
