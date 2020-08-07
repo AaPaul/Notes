@@ -55,3 +55,17 @@ Bias: It is resprented by the error rate on training set. If the error rate is h
 
 Variance: It reflects the performance on the testing set. With higher error rate, the algorithm is more likely in high variance (over-fitting: not good on generalization). 
 
+#### Basic Recipe for ML
+First,  
+High Bias Solution:
+- Bigger network
+- Training longer
+- New NN architecture.
+
+Second,  
+High Variance Solution:
+- Getting more data
+- Regularizition
+- New NN architecture.
+
+Note: Different methods can be not useful on different problems
