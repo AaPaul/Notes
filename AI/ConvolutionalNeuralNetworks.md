@@ -49,3 +49,9 @@ Kmeans的原理以及DBSCAN的原理
 ## Week 1
 #### Data set split
 In the case where the data set includes billion or million data, we may split the train/dev/test set into 98%/1%/1% and even much more imbalanced as the purpose of the dev set and the test set are to estimate the performance of models. Note the distribution of the dev set and test set should be the same.
+
+#### Bias / Variance
+Bias: It is resprented by the error rate on training set. If the error rate is high, it means the algorithm is in high Bias (under-fitting) Note: Because of wrong learning method, the performance on testing set would also be awful.
+
+Variance: It reflects the performance on the testing set. With higher error rate, the algorithm is more likely in high variance (over-fitting: not good on generalization). 
+
