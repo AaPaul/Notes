@@ -587,7 +587,7 @@ rq-dashboard is a general purpose, lightweight, Flask-based web front-end to mon
 #### Option is an option in the drop-down list in HTML form
 
 
-## Ubuntu 
+## Linux (Ubuntu) 
 #### Installation
 Mainly for manul partition.
 ```
@@ -614,4 +614,16 @@ sudo ufw disable
 
 # Turn on or turn off
 sudo ufw allow/deny [service or port]
+```
+
+#### Soft link
+Check link
+```
+ls -l
+```
+
+Build soft link
+```
+# To solve the error that Cannot find connect mysql through `/tmp/mysql.sock,(2)`
+sudo ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock 
 ```
