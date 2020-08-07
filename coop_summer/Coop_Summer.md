@@ -619,7 +619,8 @@ sudo ufw allow/deny [service or port]
 #### Soft link
 Check link
 ```
-ls -l
+# check the detail in /tmp folder.
+ls -l /tmp
 ```
 
 Build soft link
