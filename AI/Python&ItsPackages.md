@@ -279,3 +279,5 @@ for key, value in dict.items():
     print(key, value)
 ```
 
+#### Ord()
+To implement the subtraction in letters.
