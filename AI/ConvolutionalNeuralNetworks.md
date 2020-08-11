@@ -69,3 +69,12 @@ High Variance Solution:
 - New NN architecture.
 
 Note: Different methods can be not useful on different problems
+
+#### Regularization
+`w` is high dimentional number parameters while `b` is just a single number so that we often omit the `b` and only focus on `w`.
+Typically, we use 'hold-out' to do fine-tune on $\lambda$
+In logistic regression,
+
+In Neural network,
+
+- The reason why regularizations work on preventing overfitting is that it reduces the proportion of neural units who have positive effects on training model. Because of ignoring (transfer these units into inactive status) them, the model becomes simpler as it becomes like a linear model. Of course, it is still more complex than the linear model in logistic regression.
