@@ -434,8 +434,8 @@ https://blog.csdn.net/tanyjin/article/details/78640987
 delete /*# sourceMappingURL=bootstrap.min.css.map */ from bootstrap.min.css, and then the issue is gone.
 
 #### Blueprint
-
-reference:https://www.zhihu.com/question/31748237
+- If you want to add a new page in a group (blueprint), you should import this file in `__init__.py` as the initialization.
+- reference:https://www.zhihu.com/question/31748237
 
 #### Popen
 is a kind of function to start another new application or thread in a thread in `Subprocess`
