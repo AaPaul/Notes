@@ -78,3 +78,10 @@ In logistic regression,
 In Neural network,
 
 - The reason why regularizations work on preventing overfitting is that it reduces the proportion of neural units who have positive effects on training model. Because of ignoring (transfer these units into inactive status) them, the model becomes simpler as it becomes like a linear model. Of course, it is still more complex than the linear model in logistic regression.
+
+#### Dropout
+- Dropout is not used after the first layer except for CV in generally. 
+
+- In the process of implementing dropout, we use `keep_prob` which are divided by the $b_3$ to make sure the final value of $z^[3]$ is expected.
+
+- Dropout would make the process of debugging $J(w,b)$ more complex as it randomly zero out or shut off some units which makes the result of each layer be more uncertain.
