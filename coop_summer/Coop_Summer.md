@@ -506,6 +506,10 @@ master@ubuntu:/var/www/html$ sudo chown www-data:www-data -R [your-file]
 ```
 - reference: https://zhaokaifeng.com/?p=3271
 
+
+#### Multiple project deploy
+
+
 ## SQLAlchemy
 ####        db.session.query(User).filter_by(name='Tom').all()
 
@@ -627,4 +631,19 @@ Build soft link
 ```
 # To solve the error that Cannot find connect mysql through `/tmp/mysql.sock,(2)`
 sudo ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock 
+```
+
+#### the absolute path and relative path
+In Ubuntu, it's better to use absolute path in a project to prevent the error that the system cannot find the module which imported with the relative path.
+
+For example:
+```
+# In test.py which is included in the app folder and there is an another file named main. In that case, there may be no error as they are both in the same directory.
+from app.main import main_test
+import main 
+
+# Same test.py file and there is a file named outside.py which is in the same directory with app folder.
+# In that case, there may be an error because of the missing of the module named main which is imported by the relative path
+from app.main import main_test # work
+import main # does not work
 ```
