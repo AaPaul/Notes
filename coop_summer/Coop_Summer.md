@@ -253,6 +253,16 @@ If the table contains foreign keys, we can change the setting of mysql to cancel
 set_foreign_checks = 1
 ```
 
+#### Set binlog
+In the file named `***/mysqld.conf`, you can set `expire_logs_seconds`.
+```
+set sql_log_bin= {ON|OFF}
+mysql> reset master;  //删除master的binlog，即手动删除所有的binlog日志
+mysql> reset slave;  //删除slave的中继日志
+mysql> purge master logs before '2019-08-30 17:20:00';  //删除指定日期以前的日志索引中binlog日志文件
+mysql> purge master logs to 'binlog.000001';  //删除指定日志文件的日志索引中binlog日志文件
+```
+
 #### Error 'Cannot find /tmp/mysql.sock'
 ```
 sudo find / -name mysql.sock
