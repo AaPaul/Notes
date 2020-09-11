@@ -214,6 +214,13 @@ pd.set_option('max_columns', 1000)
 ### mlxtend is a library including apriori function.
 
 # Python
+#### Split duplicated string
+```[python]
+# use '|' as the separator
+import re
+re.split('>|\n', text)
+```
+
 #### [i:j] and [i:j:s]
 default settings:
 `[i:j]`: i=0, j = len(str)
