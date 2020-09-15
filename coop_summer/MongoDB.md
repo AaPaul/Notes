@@ -34,6 +34,11 @@ sudo systemctl start mongod
 ```
 Reference: https://docs.mongodb.com/manual/administration/install-on-linux/
 
+
+#### 5. Set automatically start the service
+```
+sudo systemctl enable mongo.service
+```
 ### Modify the MongoDB storage location
 Because of the space limitaion of the root(`/`) directory, I changed the location of data storage.
 
@@ -45,4 +50,22 @@ mkdir mongodb_data
 sudo chown -R mongodb:mongodb mongodb_data
 sudo cp -R /var/lib/mongodb /mongodb_data
 sudo systemctl restart mongodb
+```
+
+
+### Basic operation
+#### Create DB
+```
+use dbname;
+show tables;
+```
+#### Drop DB
+```
+use dbname;
+db.dropDatabase()
+```
+
+#### Create Collection
+```
+
 ```
