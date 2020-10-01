@@ -460,6 +460,32 @@ is a kind of function to start another new application or thread in a thread in 
 #### url_for
 quickly find the corresponding url.
 
+## Jinja2
+#### contional statement
+```
+{% for item in {{item_list}} %}
+
+{%endfor}
+
+{% if xxx %}
+{% endif %}
+```
+
+##### Variables of a for-loop block
+
+|  Variables   | Description  |
+|  :----:  | :----:  |
+| **loop.index**  | The current iteration of the loop |
+| **loop.revindex** | The number of iterations from the end of the loop (1 indexed)|
+| **loop.first** | True if first iteration |
+| **loop.last**| True if last iteration |
+| **loop.length** | The number of items in the sequence |
+| **loop.cycle**| To cycle between a list of sequence |
+|**loop.depth**| Indicates how deep in deep in a recusive loop the rendering currently is. Starts at level 1|
+
+https://blog.csdn.net/kylinxjd/article/details/94563427  \
+https://segmentfault.com/q/1010000000690359/a-1020000000690397
+
 ## Apache
 
 #### Common commands
