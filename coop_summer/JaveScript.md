@@ -14,6 +14,27 @@ $.ajax({
 })
 ```
 
+#### The way to transfer the data to server from front-end.
+Set the contentType(datatype) to "application/json; charset=utf-8" and then set data using JSON.stringify({"key": value})
+```
+$.ajax({
+        url : "../../admin/insert/user",
+        type : 'post',//method请求方式，get或者post
+        dataType : 'json',//预期服务器返回的数据类型
+        contentType : "application/json; charset=utf-8",
+        data :JSON.stringify(data.field) ,
+        success : function(result) {
+            if (result == "success") {
+                        console.log("添加成功")
+            } else {
+                console.log("添加失败")
+            }
+        },
+        error : function(msg) {
+        }
+    })
+```
+
 ## LocalStorage
 #### LocalStorage.setItem("name", value)
 To store the value with the name in local storage.
