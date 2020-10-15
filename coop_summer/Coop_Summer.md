@@ -170,6 +170,28 @@ SHOW VARIABLES LIKE 'validate_password%';
 set global validate_password.policy=LOW;
 ```
 
+
+#### ERROR 2013: Lost connection to MySQL server during query
+There may be three reasons resulting this issue.
+- Time out because of two variables which are not big enough. 
+```
+# set it in /etc/mysql/my.cnf 
+net_read_timeout = 120
+net_write_timeout = 900
+
+# after saving that, restart mysql server
+```
+
+- Setting of `max_allowed_packet` which controls the size of data package which is in importing.
+```
+# set it in /etc/mysql/my.cnf 
+max_allowed_packet      = 500M
+``` 
+
+- The table is broken.
+
+
+
 #### DBURI
 ```
 mysql标示位表明是哪个数据库
