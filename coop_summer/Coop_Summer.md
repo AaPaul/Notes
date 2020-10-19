@@ -648,6 +648,8 @@ rq-dashboard is a general purpose, lightweight, Flask-based web front-end to mon
 
 #### Option is an option in the drop-down list in HTML form
 
+#### location.href()
+Jumping within pages
 
 ## Linux (Ubuntu) 
 #### Installation
@@ -705,3 +707,61 @@ import main
 from app.main import main_test # work
 import main # does not work
 ```
+
+## DataFrame
+#### DataFrame to json and transfer the format to dict instead of unicode
+
+1. `eval(df.to_json())`. `name 'null' is not defined` this issue cannot be resolved.
+
+2. `json.loads(df.to_json())`
+
+```
+# One
+json_1 = eval(df.to_json(orient=xxx)) # cannot support the data with None value
+
+ # {‘split’,’records’,’index’,’columns’,’values’}
+
+ df = pd.DataFrame([['a', 'b'], ['c', 'd']],
+                   index=['row 1', 'row 2'],
+                   columns=['col 1', 'col 2'])
+###########
+split
+###########
+df.to_json(orient='split')
+>'{"columns":["col 1","col 2"],
+  "index":["row 1","row 2"],
+  "data":[["a","b"],["c","d"]]}'
+###########
+index
+###########
+df.to_json(orient='index')
+>'{"row 1":{"col 1":"a","col 2":"b"},"row 2":{"col 1":"c","col 2":"d"}}'
+
+###########
+records
+###########
+df.to_json(orient='index')
+>'[{"col 1":"a","col 2":"b"},{"col 1":"c","col 2":"d"}]'
+
+###########
+table
+###########
+df.to_json(orient='table')
+>'{"schema": {"fields": [{"name": "index", "type": "string"},
+                        {"name": "col 1", "type": "string"},
+                        {"name": "col 2", "type": "string"}],
+             "primaryKey": "index",
+             "pandas_version": "0.20.0"},
+  "data": [{"index": "row 1", "col 1": "a", "col 2": "b"},
+           {"index": "row 2", "col 1": "c", "col 2": "d"}]}'
+
+
+
+# Two
+json_2 = json.loads(df.to_json()) # can support None values.
+```
+
+Ref: 
+- https://blog.csdn.net/huanbia/article/details/72674832?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight
+- https://blog.csdn.net/ANXIN997483092/article/details/79223410
+- https://www.cnblogs.com/lowmanisbusy/p/9135917.html

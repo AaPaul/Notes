@@ -27,3 +27,7 @@ git reset –soft：回退到某个版本，只回退了commit的信息，不会
 git reset –hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容     
 ```
 
+#### git checkout
+It can resolve the issue named "already up-to-date" when you pull the code from the remote.
+Ref: 
+https://blog.csdn.net/heguixian/article/details/51029026
