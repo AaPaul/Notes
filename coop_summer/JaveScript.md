@@ -109,3 +109,36 @@ Ref: https://www.bbsmax.com/A/nAJvGynQ5r/
 
 ## Others
 #### 'GET' vs 'POST'
+
+#### Using 'POST' method to implement downloading function
+The reason why not use 'GET' method is because of the limitaion of the length'GET' url on the browser. 
+Different browsers has different rule for limiting the length of url. If the length exceeds the limitation, the url would be cut off.
+```
+IE and Safari: 2k
+Opera: 4k
+Firefox: 8k
+```
+
+```
+	function download_data() {
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        var a;
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            a = document.createElement('a');
+            a.href = window.URL.createObjectURL(xhttp.response);
+            a.download = variables.data_default['trait_name']+".csv";
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click()
+        }
+    };
+    xhttp.open("POST", variables.url_downloading); //variables.url_downloading is the url to download
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.responseType = 'blob';
+    xhttp.send(JSON.stringify(variables.data_default)); // variables.data_default is the data to download
+};
+```
+Ref: 
+- https://stackoverflow.com/questions/26737883/content-dispositionattachment-not-triggering-download-dialog
+- https://blog.csdn.net/u010552788/article/details/80593962
