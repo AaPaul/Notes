@@ -142,3 +142,13 @@ Firefox: 8k
 Ref: 
 - https://stackoverflow.com/questions/26737883/content-dispositionattachment-not-triggering-download-dialog
 - https://blog.csdn.net/u010552788/article/details/80593962
+- https://www.jianshu.com/p/512389822f8b
+
+#### JSON to str & str to JSON
+```
+JSON.parse(str)
+
+JSON.stringfy(json)
+eval(str)
+
+```

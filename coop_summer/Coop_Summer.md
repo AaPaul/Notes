@@ -651,6 +651,8 @@ rq-dashboard is a general purpose, lightweight, Flask-based web front-end to mon
 #### location.href()
 Jumping within pages
 
+#### Using 'POST' method to implement downloading function
+
 ## Linux (Ubuntu) 
 #### Installation
 Mainly for manul partition.
