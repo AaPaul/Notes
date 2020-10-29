@@ -150,5 +150,39 @@ JSON.parse(str)
 
 JSON.stringfy(json)
 eval(str)
+(new Function("return" + str))()
 
 ```
+Ref: https://segmentfault.com/a/1190000007368846
+
+#### Get the selected content in the select label
+```
+$(|"#selection option:selected").val()
+```
+
+
+### DataTable
+#### columnDefs
+Setting of initializing the attributes of each column
+- 0或者正整数-列从左到右是从0开始
+- 一个负数-列从右到左的索引(-1代表最后一列)
+- 一个字符串-将字符串和类名匹配列
+- 字符串"_all"-所有列
+```
+$('#example').dataTable( {
+  "columnDefs": [ {
+      "targets": 0,
+      "searchable": false
+    } ]
+} );
+```
+
+Ref: http://datatables.club/reference/option/columnDefs.html
+
+#### $('td', row).eq(0)
+It means the first block in the first column
+
+`$('tr').eq(0)` means the first row.
+
+#### The issue that the data cannot be renderred into the table.
+In the part of initializing table, we can allocate the data for each column by using `$('td', row).eq(num).html('content')`.
