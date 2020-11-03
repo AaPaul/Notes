@@ -186,3 +186,58 @@ It means the first block in the first column
 
 #### The issue that the data cannot be renderred into the table.
 In the part of initializing table, we can allocate the data for each column by using `$('td', row).eq(num).html('content')`.
+
+
+
+------------------------------------
+------------------------------------
+### 2020-11-03
+#### Tips
+- Array is a kind of special datatype as the result returned by using `typeof` function is `Object`
+- `null` has no value while it is an `object` as it is a null object reference
+```
+NaN 的数据类型是 number
+数组(Array)的数据类型是 object
+日期(Date)的数据类型为 object
+null 的数据类型是 object
+未定义变量的数据类型为 undefined
+typeof (NaN) // return number
+typeof (Array) // return Object
+typeof (Date) // return Object
+typeof (null) // return Object
+// the variable of undefined will return undefined
+```
+- `undefined` is a variable without value and can be used to clean the value of any variables.
+```
+1、定义
+ （1）undefined：是所有没有赋值变量的默认值，自动赋值。
+ （2）null：主动释放一个变量引用的对象，表示一个变量不再指向任何对象地址。
+2、何时使用null?
+
+当使用完一个比较大的对象时，需要对其进行释放内存时，设置为 null。
+
+3、null 与 undefined 的异同点是什么呢？
+
+共同点：都是原始类型，保存在栈中变量本地。
+
+不同点：
+
+（1）undefined——表示变量声明过但并未赋过值。
+
+它是所有未赋值变量默认值，例如：
+
+var a;    // a 自动被赋值为 undefined
+（2）null——表示一个变量将来可能指向一个对象。
+
+一般用于主动释放指向对象的引用，例如：
+
+var emps = ['ss','nn'];
+emps = null;     // 释放指向数组的引用
+4、延伸——垃圾回收站
+
+它是专门释放对象内存的一个程序。
+
+ （1）在底层，后台伴随当前程序同时运行；引擎会定时自动调用垃圾回收期；
+ （2）总有一个对象不再被任何变量引用时，才释放。
+```
+- It's safer to use `const` than `var` as the former one states a constant value.
