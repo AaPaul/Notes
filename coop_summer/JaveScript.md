@@ -207,6 +207,7 @@ typeof (Date) // return Object
 typeof (null) // return Object
 // the variable of undefined will return undefined
 ```
+
 - `undefined` is a variable without value and can be used to clean the value of any variables.
 ```
 1、定义
@@ -241,3 +242,25 @@ emps = null;     // 释放指向数组的引用
  （2）总有一个对象不再被任何变量引用时，才释放。
 ```
 - It's safer to use `const` than `var` as the former one states a constant value.
+
+### 2020-11-05
+#### Regular Expression
+```
+A regular expression is a sequence of characters that forms a search pattern.
+
+When you search for data in a text, you can use this search pattern to describe what you are searching for.
+
+A regular expression can be a single character, or a more complicated pattern.
+
+Regular expressions can be used to perform all types of text search and text replace operations.
+```
+
+### 2020-11-13
+#### Ajax transfer array data to the server
+You need to use JSON to change the format of the data
+```
+data = {
+  'data1': JSON.stringify(list1),
+  'data2': JSON.stringify(list2)
+}
+```

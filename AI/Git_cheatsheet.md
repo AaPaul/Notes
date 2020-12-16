@@ -31,3 +31,14 @@ git reset –hard：彻底回退到某个版本，本地的源码也会变为上
 It can resolve the issue named "already up-to-date" when you pull the code from the remote.
 Ref: 
 https://blog.csdn.net/heguixian/article/details/51029026
+
+#### git fetch
+Sometimes we may meet an issue that `Repository xxx not found`. One reason is that we need to set the remote origin.
+```
+git remote -v # check the current remote origin
+git remote rm origin
+git remote add origin https://USERNAME:PASSWORD@github.com/user/repo.git # (for a private repository)
+git fetch
+git branch --set-upstream-to=origin/master origin
+git pull
+```

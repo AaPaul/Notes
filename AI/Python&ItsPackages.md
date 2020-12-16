@@ -17,9 +17,18 @@ Writing codes in a block: ```Ctrl+Enter```
 ---
 ---
 # PyCharm
+### Basic operations
+#### Git conflicts
+'Accept right' means that you accept the code on remote server and discard your changes. 'Accept left' means you would choose your own code and cover the remoted changes.
+### Anaconda
+#### conda-forge
+A method to install some libriries which cannot be installed by normal `pip install` or `conda install`
+```
+conda install -c conda-forge jpype1
+```
 ### DataFram
 
-#### Find columns/rows
+#### Find columns/rows  
 ```
 df.iloc() 根据索引来寻找行列（先行后列）
 df.loc() 行标签和列标签
@@ -288,3 +297,7 @@ for key, value in dict.items():
 
 #### Ord()
 To implement the subtraction in letters.
+
+### Errors
+#### Import Error
+One potential reason is that a `__init__.py` file is needed in this folder.
