@@ -609,6 +609,124 @@ It is a kind of data. After the browser visites the server, the server would pas
 ```engine = create_engine("your_db_uri", echo=True)```
 **Reference**:https://blog.csdn.net/shuaizy2017/article/details/80326868
 
+#### Pagination on server side
+##### Front-end
+```[JavaScript]
+$('table-name').DataTable({
+        "serverSide": true,
+        "ajax": {
+                url: "/url",
+                type: "POST"
+        },
+        "bFilter": true,
+        "bSort": true
+});
+
+```
+##### Rear-end
+using `concat` in mysql to implement blurry search.
+```
+def function('/url', methods=['POST', 'GET']):
+
+if request.method = 'POST':
+        pagesize = int(request.form.get('length')) # The number size of displaying the table
+        start = int(request.form.get('start')) 
+        search = request.form.get('search[value]') # value in search bar
+        order_column_num = int(request.form.get('order[0][column]'))
+        order_dir = request.form.get('order[0][dir]')
+        column_dict = {
+            0: marker.marker_name,
+            1: marker.marker_name_alt,
+            2: marker.marker_type,
+            3: marker.org_marker_chr,
+            4: marker.org_marker_ctg,
+            5: marker.mapped_marker_chr,
+            6: marker.mapped_marker_pos
+        }
+        order_column = column_dict[order_column_num]
+        if order_dir == 'desc':
+            cond = order_column.desc()
+        else:
+            cond = order_column.asc()
+        if app_name=='FlaxDB':
+            species_f = 1
+            markers_list, message_num = get_markers_info(species_f, cond, start, pagesize, search)
+        elif app_name=='4DWheat':
+            species_f = 4
+            markers_list, message_num = get_markers_info(species_f, cond, start, pagesize, search)
+        else:
+            markers_list, message_num = get_markers_info_CGBP(cond, start, pagesize, search)
+        data = []
+        for x, y in enumerate(markers_list):
+            m_name = '<a href="/QTL/marker/%s">%s</a>' % (y.id, y.marker_name)
+            row = [m_name, y.alt_name, y.marker_type, y.org_marker_chr, y.org_marker_ctg, y.mapped_marker_chr, y.mapped_marker_pos]
+            data.append(row)
+        messagedata = {
+            "recordsTotal": message_num,
+            "recordsFiltered": message_num,
+            "data": data
+        }
+        return json.dumps(messagedata)
+
+def get_markers_info(species_f,cond, start, pagesize, search=None):
+    if search:
+        markers_list = session.query(marker.id, marker.marker_name, marker.marker_name_alt.label('alt_name'),
+                                     marker.marker_type,
+                                     marker.org_marker_chr,
+                                     marker.org_marker_ctg, marker.mapped_marker_chr,
+                                     marker.mapped_marker_pos).filter(and_(
+            marker.species_f == species_f,
+            func.concat(marker.marker_name, ',', marker.id, ',', marker.marker_name_alt, ',',
+                        marker.marker_type, ',',
+                        marker.org_marker_chr, ',',
+                        marker.org_marker_ctg, ',', marker.mapped_marker_chr, ',',
+                        marker.mapped_marker_pos).like('%' + search + '%'))).order_by(cond).offset(start).limit(
+            pagesize).all()
+        message_num = session.query(func.count(marker.id)).filter(and_(
+            marker.species_f == species_f,
+            func.concat(marker.marker_name, ',', marker.id, ',', marker.marker_name_alt, ',',
+                        marker.marker_type, ',',
+                        marker.org_marker_chr, ',',
+                        marker.org_marker_ctg, ',', marker.mapped_marker_chr, ',',
+                        marker.mapped_marker_pos).like('%' + search + '%'))).all()[0]
+    else:
+        markers_list = session.query(marker.id, marker.marker_name, marker.marker_name_alt.label('alt_name'),
+                                     marker.marker_type,
+                                     marker.org_marker_chr,
+                                     marker.org_marker_ctg, marker.mapped_marker_chr, marker.mapped_marker_pos).filter(
+            marker.species_f == species_f).order_by(cond).offset(start).limit(pagesize).all()
+        message_num = session.query(func.count(marker.id)).filter(marker.species_f == species_f).all()[0]
+
+    return markers_list, message_num
+
+def get_markers_info_CGBP(cond, start, pagesize, search=None):
+    if search:
+        markers_list = session.query(marker.id, marker.marker_name, marker.marker_name_alt.label('alt_name'),
+                                     marker.marker_type,
+                                     marker.org_marker_chr,
+                                     marker.org_marker_ctg, marker.mapped_marker_chr,
+                                     marker.mapped_marker_pos).filter(
+            func.concat(marker.marker_name, ',', marker.id, ',', marker.marker_name_alt, ',',
+                        marker.marker_type, ',',
+                        marker.org_marker_chr, ',',
+                        marker.org_marker_ctg, ',', marker.mapped_marker_chr, ',',
+                        marker.mapped_marker_pos).like('%' + search + '%')).order_by(cond).offset(start).limit(
+            pagesize).all()
+        message_num = session.query(func.count(marker.id)).filter(
+            func.concat(marker.marker_name, ',', marker.id, ',', marker.marker_name_alt, ',',
+                        marker.marker_type, ',',
+                        marker.org_marker_chr, ',',
+                        marker.org_marker_ctg, ',', marker.mapped_marker_chr, ',',
+                        marker.mapped_marker_pos).like('%' + search + '%')).all()[0]
+    else:
+        markers_list = session.query(marker.id, marker.marker_name, marker.marker_name_alt.label('alt_name'),
+                                     marker.marker_type, marker.org_marker_chr,
+                                     marker.org_marker_ctg, marker.mapped_marker_chr,
+                                     marker.mapped_marker_pos).order_by(cond).offset(start).limit(pagesize).all()
+        message_num = session.query(func.count(marker.id)).all()[0]
+
+    return markers_list, message_num
+```
 
 ## Anaconda
 #### Export and import environment
@@ -767,3 +885,4 @@ Ref:
 - https://blog.csdn.net/huanbia/article/details/72674832?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight
 - https://blog.csdn.net/ANXIN997483092/article/details/79223410
 - https://www.cnblogs.com/lowmanisbusy/p/9135917.html
+
