@@ -886,8 +886,4 @@ Ref:
 - https://blog.csdn.net/ANXIN997483092/article/details/79223410
 - https://www.cnblogs.com/lowmanisbusy/p/9135917.html
 
-<<<<<<< HEAD
-=======
-#### Change the style of displaying
-`style: display` is a good thing.
->>>>>>> daf59ee29a848e4cb8f59b1be270e55c80caf66f
+
